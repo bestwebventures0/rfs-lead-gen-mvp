@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match: one
+  day: MyString
+  when: MyString
+  how: MyString
+
+two:
+  match: two
+  day: MyString
+  when: MyString
+  how: MyString

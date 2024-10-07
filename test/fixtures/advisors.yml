@@ -1,0 +1,51 @@
+# == Schema Information
+#
+# Table name: advisors
+#
+#  id               :integer          not null, primary key
+#  name             :string
+#  phone            :integer
+#  email            :string
+#  website          :string
+#  address          :string
+#  city             :string
+#  bio              :text
+#  certifications   :string
+#  specializations  :string
+#  experience_years :integer
+#  education        :string
+#  availability     :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  licenses         :string
+#  company_name     :string
+#  client_types     :string
+#
+
+one:
+  name: MyString
+  phone: 1
+  email: MyString
+  website: MyString
+  address: MyString
+  city: MyString
+  bio: MyText
+  certifications: MyString
+  specializations: MyString
+  experience_years: 1
+  education: MyString
+  availability: MyString
+
+two:
+  name: MyString
+  phone: 1
+  email: MyString
+  website: MyString
+  address: MyString
+  city: MyString
+  bio: MyText
+  certifications: MyString
+  specializations: MyString
+  experience_years: 1
+  education: MyString
+  availability: MyString

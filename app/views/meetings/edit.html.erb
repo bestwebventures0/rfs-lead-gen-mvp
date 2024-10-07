@@ -1,0 +1,7 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h3 class="text-2xl lg:text-3xl xl:text-3xl font-extrabold mb-12 col-span-full">Re-book the meeting with <span class="border-b border-gray-900"><%= @meeting.match.advisor.name.titlecase %></span></h3>
+
+  <%= render "form", meeting: @meeting %>
+
+  <%= link_to "Cancel", dashboard_advisors_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>

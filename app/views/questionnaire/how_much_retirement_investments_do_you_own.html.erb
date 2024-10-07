@@ -1,0 +1,16 @@
+<% content_for :step_title do %>
+  How much retirement investments do you own?
+<% end %>
+
+<% content_for :step do %>
+  8
+<% end %>
+
+<% content_for :sidebar_image do %>questionnaire/step-8.jpg<% end %>
+
+<%= render layout: 'form' do |f| %>
+  <div class="my-5 form-field is-required">
+    <%= f.label "Retirement Investments in ₹", class: "font-bold" %>
+    <%= f.select :retirement_investments_in_lacs, ["Under 5 Lacs", "5 Lacs to 25 Lacs", "25 Lacs to 50 Lacs", "50 Lacs to 3 Crores", "3 Crores Above"] %>
+  </div>
+<% end %>

@@ -1,0 +1,46 @@
+<section class="flex questionnaire">
+
+  <div class="hidden lg:block xl:block w-5/12 min-h-screen bg-[#489030]">
+    <%= image_tag content_for(:sidebar_image), class: "object-cover object-bottom h-full fixed bottom-0 left-0 w-5/12 pointer-events-none" %>
+  </div>
+
+  <div class="lg:w-7/12 xl:w-7/12">
+    <div class="max-w-screen-sm min-h-screen mx-auto px-4 pt-16 pb-8">
+
+      <p class="mb-8">STEP <%= content_for :step %> of 11</p>
+
+      <h2 class="font-extrabold text-4xl"><%= content_for :step_title %></h2>
+
+      <%= form_with model: @questionnaire, url: wizard_path, method: :patch do |f| %>
+
+        <% if f.object.errors.any? %>
+          <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+            <h2 class="font-bold text-2xl"><%= pluralize(f.object.errors.count, "error") %> prohibited this field from being saved:</h2>
+            <ul>
+              <% f.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+          
+        <%= yield f %>
+
+        <div class="inline">
+          <% unless step == "how_old_are_you" %>
+            <%= link_to 'Go Back', previous_wizard_path, class: "rounded-lg py-3 px-5 bg-gray-600 text-white inline-block font-medium cursor-pointer", data: { turbo: false } %>
+          <% end %>
+          <%= f.submit 'Continue', class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %> <br><br>
+          <%= link_to 'Quit Questionnaire', root_path, class: "text-blue-600 hover:underline mt-8", data: { turbo: false } %>
+        </div>
+
+      <% end %>
+
+      <%= render 'shared/questionnaire/disclaimer' %>
+
+    </div>
+
+    <%= render 'shared/questionnaire/footer' %>
+
+  </div>
+</section>

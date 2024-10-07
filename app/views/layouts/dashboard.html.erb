@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard - RiaFin</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+      .font-cursive {
+          font-family: 'Indie Flower', cursive;
+      }
+  </style>
+  
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= render "shared/dashboard/nav" %>
+    <main class="relative min-h-screen">
+      <%= render "shared/flash" %>
+      <section>
+        <div class="flex">
+          <%= render 'shared/dashboard/sidebar' %>
+          <div class="lg:w-4/5 xl:w-4/5 px-8 py-12 shadow-top">
+            <%= yield %>
+          </div>
+        </div>
+      </section>
+      <%= render "shared/dashboard/footer" %>
+    </main>
+  </body>
+</html>

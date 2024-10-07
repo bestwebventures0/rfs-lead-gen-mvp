@@ -1,0 +1,27 @@
+<div class="min-h-screen flex justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full">
+    <%= render 'devise/shared/devise_heading', title: 'Enter OTP to Validate' %>
+    <%= render "devise/shared/devise_sub_heading", subtitle: "Validate your Email Address." %>
+
+    <%= form_with scope: :user, url: validate_otp_confirmations_path, method: :post do |form| %>
+      <%= form.text_field :otp, placeholder: "OTP", class: "my-1 mt-8 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+      <div class="mt-6">
+        <button type="submit" data-turbo="false" class="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+            <svg class="h-5 w-5 transition ease-in-out duration-150" fill="white" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          Validate
+        </button>
+      </div>
+    <% end %>
+
+    <div class="mt-6 text-center text-gray-400">
+      Haven't recieved OTP yet?
+      <%#= link_to 'Resend OTP', confirm_email_for_otp_confirmations_path %>
+      <%= link_to 'Resend OTP', confirm_email_for_otp_confirmations_path, class: 'font-medium text-gray-500 hover:text-gray-600 focus:outline-none focus:underline transition ease-in-out duration-150' %> <br>
+      <%= link_to "Back to Login", new_user_session_path, class: "text-sm font-medium text-blue-600 hover:underline" %>
+    </div>
+  </div>
+</div>

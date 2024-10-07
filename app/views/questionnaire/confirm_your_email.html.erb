@@ -1,0 +1,46 @@
+<section class="flex questionnaire">
+
+  <div class="hidden lg:block xl:block w-5/12 min-h-screen bg-[#489030]">
+    <%= image_tag "questionnaire/step-11.jpg", class: "object-cover object-bottom h-full fixed bottom-0 left-0 w-5/12 pointer-events-none" %>
+  </div>
+
+  <div class="lg:w-7/12 xl:w-7/12">
+    <div class="max-w-screen-sm min-h-screen mx-auto px-4 pt-16 pb-8">
+
+      <p class="mb-8">FINAL STEP</p>
+
+      <h2 class="font-extrabold text-4xl">Validate your Email Address below:</h2>
+
+      <%= form_with scope: :user, url: wizard_path, method: :patch do |f| %>
+
+        <div class="my-5 form-field is-required">
+          <%= f.label "Enter the token you received in email", class: "font-bold" %>
+          <%= f.text_field :otp, placeholder: "OTP", autofocus: true, required: true, class: "my-1 mt-8 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+        </div>
+
+        <div class="inline">
+          <button type="submit" data-turbo="false" class="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+              <svg class="h-5 w-5 transition ease-in-out duration-150" fill="white" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Validate
+          </button>
+        </div>
+
+        <div class="mt-6 text-center text-gray-400">
+          Haven't recieved OTP yet?
+          <%#= link_to 'Resend OTP', confirm_email_for_otp_confirmations_path %>
+          <%= link_to 'Resend OTP', confirm_email_for_otp_confirmations_path, class: 'font-medium text-gray-500 hover:text-gray-600 focus:outline-none focus:underline transition ease-in-out duration-150' %> <br>
+          <%= link_to 'Nevermind', root_path, class: "text-blue-600 hover:underline", data: { turbo: false } %>
+        </div>
+
+      <% end %>
+
+    </div>
+
+    <%= render 'shared/questionnaire/footer' %>
+
+  </div>
+</section>

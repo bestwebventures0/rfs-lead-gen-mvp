@@ -1,0 +1,58 @@
+<%= form_with(model: meeting, class: "contents") do |form| %>
+  <% if meeting.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+        <% meeting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5 is-required">
+    <p class="font-semibold pb-2">Select part of the day you want to book your meeting *</p>
+    <%= form.radio_button :day, "Morning", class: "shadow" %>
+    <%= form.label :day_morning, "Morning" %>
+    <br>
+    <%= form.radio_button :day, "Afternoon", class: "shadow" %>
+    <%= form.label :day_afternoon, "Afternoon" %>
+    <br>
+    <%= form.radio_button :day, "Evening", class: "shadow" %>
+    <%= form.label :day_evening, "Evening" %>
+  </div>
+
+  <div class="my-5 is-required">
+    <p class="font-semibold pb-2">Select when you want to book your meeting *</p>
+    <%= form.radio_button :when, "Earliest Available", class: "shadow" %>
+    <%= form.label :day_earliest_available, "Earliest Available" %>
+    <br>
+    <%= form.radio_button :when, "In 3 Days", class: "shadow" %>
+    <%= form.label :day_in_3_days, "In 3 Days" %>
+    <br>
+    <%= form.radio_button :when, "Next Week", class: "shadow" %>
+    <%= form.label :day_next_week, "Next Week" %>
+    <br>
+    <%= form.radio_button :when, "Not Sure", class: "shadow" %>
+    <%= form.label :day_not_sure, "Not Sure" %>
+  </div>
+
+  <div class="my-5 is-required">
+    <p class="font-semibold pb-2">Select how you want to attend your meeting *</p>
+    <%= form.radio_button :how, "Phone", class: "shadow" %>
+    <%= form.label :day_phone, "Phone" %>
+    <br>
+    <%= form.radio_button :how, "Video Call", class: "shadow" %>
+    <%= form.label :day_video_call, "Video Call" %>
+  </div>
+
+  <div class="my-5 form-field">
+    <%= form.label :note, class: "font-bold" %>
+    <%= form.text_area :note, placeholder: "Anything you want the advisor to know before getting into the call?", class: "block shadow rounded-md border border-gray-400 px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

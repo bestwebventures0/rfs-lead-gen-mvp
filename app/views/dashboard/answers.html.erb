@@ -1,0 +1,36 @@
+<h2 class="text-2xl lg:text-3xl xl:text-3xl font-extrabold mb-12"><span class="border-b border-gray-900">Your Answers to Our Questionnaire</span></h2>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: How old are you?</h3>
+<p class="text-lg"><%= current_user.questionnaire.age %></p></div>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: Where do you live?</h3>
+<p class="text-lg"><%= current_user.questionnaire.pincode %></p></div>
+
+<div class="mb-8">
+    <h3 class="text-xl font-bold mb-4">Q: What do you need help with?</h3>
+    <ul class="text-lg">
+        <% current_user.questionnaire.categories.each do |c| %>
+            <%= c.title.capitalize %><%= ',' unless c == current_user.questionnaire.categories&.last %>
+        <% end %>
+    </ul>
+</div>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: What is your annual household income?</h3>
+<p class="text-lg">₹ <%= current_user.questionnaire.annual_income_in_lacs %></p></div>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: How much cash assets do you own?</h3>
+<p class="text-lg">₹ <%= current_user.questionnaire.cash_assets_in_lacs %></p></div>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: How much real estate assets do you own?</h3>
+<p class="text-lg">₹ <%= current_user.questionnaire.real_estate_assets_in_lacs %></p></div>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: How much investments do you own?</h3>
+<p class="text-lg">₹ <%= current_user.questionnaire.investments_in_lacs %></p></div>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: How much retirement investments do you own?</h3>
+<p class="text-lg">₹ <%= current_user.questionnaire.retirement_investments_in_lacs %></p></div>
+
+<div class="mb-8"><h3 class="text-xl font-bold mb-4">Q: How much stock investments do you own?</h3>
+<p class="text-lg">₹ <%= current_user.questionnaire.stock_investments_in_lacs %></p></div>
+
+<p class="text-lg mt-8"><a href="https://riafin.com/contact" target="_blank" class="text-blue-600 hover:underline">Contact us</a> if you need to change the answers.</p>

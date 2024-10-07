@@ -1,0 +1,18 @@
+<% content_for :step_title do %>
+  How much is your annual houselhold income?
+<% end %>
+
+<% content_for :step do %>
+  4
+<% end %>
+
+<% content_for :sidebar_image do %>questionnaire/step-4.jpg<% end %>
+
+<%= render layout: 'form' do |f| %>
+
+  <div class="my-5 form-field is-required">
+    <%= f.label "Annual Income in ₹", class: "font-bold" %>
+    <%= f.select :annual_income_in_lacs, ["Under 3 Lacs", "3 Lacs to 6 Lacs", "6 Lacs to 12 Lacs", "12 Lacs to 24 Lacs", "24 Lacs to 50 Lacs", "50 Lacs to 1 Crores", "1 Crores Above"] %>
+  </div>
+  
+<% end %>

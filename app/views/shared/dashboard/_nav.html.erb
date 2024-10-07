@@ -1,0 +1,52 @@
+<header class="text-sm">
+    <!-- navigation -->
+    <nav class="nav mx-auto flex max-w-full flex-wrap items-center justify-between px-4 sm:px-6 lg:px-8 text-black bg-slate-100 border-b border-slate-200 shadow-lg shadow-slate-100">
+      <div class="flex-no-shrink mr-6 flex items-center py-3 text-blue-600">
+        <figure class="flex flex-shrink-0 items-center space-x-1">
+          <img
+            alt="RiaFin"
+            class="h-12 w-auto"
+            src="<%= image_path 'riafin-logo.png' %>"
+            height="48"
+            width="" />
+        </figure>
+      </div>
+  
+      <input
+        class="menu-btn hidden"
+        type="checkbox"
+        id="menu-btn" />
+      <label class="menu-icon relative block cursor-pointer select-none px-2 py-4 md:hidden" for="menu-btn">
+        <span class="navicon bg-grey-darkest relative flex items-center"></span>
+      </label>
+  
+      <ul class="menu list-reset m-0 flex w-full justify-end md:w-auto border-none">
+  
+        <li>
+          <a href="https://riafin.com/posts" target="_blank" class="block px-2 py-3 text-blue-600 hover:text-blue-800 md:inline-block">
+            Resources
+          </a>
+        </li>
+  
+        <li>
+          <a href="https://riafin.com/contact" target="_blank" class="block px-2 py-3 text-blue-600 hover:text-blue-800 md:inline-block">
+            Support
+          </a>
+        </li>
+        
+        <% if user_signed_in? %>
+            <li>
+                <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "block px-2 py-3 bg-white hover:bg-orange-600 text-orange-600 hover:text-white border border-orange-600 rounded lg:ml-4 xl:ml-4 md:inline-block" %> 
+            </li>
+        <% else %>
+            <li>
+                <%= link_to "Sign in", new_user_session_path, method: :get, data: { turbo: false }, class: "block px-2 py-3 text-blue-600 hover:text-blue-800 md:inline-block" %>
+            </li>
+            <li>
+                <%= button_to "Find an Advisor", questionnaire_path("how_old_are_you"), method: :get, data: { turbo: false }, class: "block px-2 py-3 bg-white hover:bg-orange-600 text-orange-600 hover:text-white border border-orange-600 rounded lg:ml-4 xl:ml-4 md:inline-block" %>
+            </li>        
+        <% end %>
+        
+      </ul>
+    </nav>
+  </header>

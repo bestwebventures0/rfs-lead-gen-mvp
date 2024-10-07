@@ -1,0 +1,23 @@
+<p class="font-bold">Hi <%= @user.first_name %>,</p>
+
+<p>
+  Please use the OTP below to validate your email address.
+</p>
+
+<p>This OTP is valid only for 5 minutes from now.</p>
+
+<p>
+  <b>OTP:</b> <span class="blue"><%= @otp %></span>
+</p>
+
+<p>Copy and paste the above OTP in the text box on RiaFin questionnaire.</p>
+
+<p>You can always regenerate the OTP by clicking on the link below in case you forgot to validate your email address.</p>
+
+<p><a href="<%= confirm_email_for_otp_confirmations_url %>">Regenerate OTP</a></p>
+
+<p>
+  --<br>
+  Best regards,<br>
+  RiaFin Dev Team.
+</p>

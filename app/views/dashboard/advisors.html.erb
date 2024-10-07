@@ -1,0 +1,20 @@
+<% unless current_user.advisors.empty? %>
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-6 pb-8">
+
+        <h3 class="text-2xl lg:text-3xl xl:text-3xl font-extrabold mb-12 col-span-full"><span class="border-b border-gray-900">Your Adviser Matches</span></h3>
+
+        <% current_user.advisors.each do |advisor| %>
+            <%= render 'shared/dashboard/advisor', advisor: advisor %>
+        <% end %>
+
+    </div>
+<% else %>
+    <h2 class="text-2xl lg:text-3xl xl:text-3xl font-extrabold mb-12"><span class="border-b border-gray-900">Matched Advisors</span></h2>
+
+    <h3 class="text-2xl font-bold mb-4">We will update this page in 4-5 working days</h3>
+
+    <h4 class="text-xl font-bold mb-4">Thank You for Choosing RiaFin!</h4>
+
+    <p class="text-lg mt-8">Best Regards,</p>
+    <p class="text-lg">RiaFin Operations Team.</p>
+<% end %>

@@ -1,0 +1,18 @@
+<% content_for :step_title do %>
+  How much real estate assets do you own?
+<% end %>
+
+<% content_for :step do %>
+  6
+<% end %>
+
+<% content_for :sidebar_image do %>questionnaire/step-6.jpg<% end %>
+
+<%= render layout: 'form' do |f| %>
+
+  <div class="my-5 form-field is-required">
+    <%= f.label "Real Estate Assets in ₹", class: "font-bold" %>
+    <%= f.select :real_estate_assets_in_lacs, ["Under 5 Lacs", "5 Lacs to 25 Lacs", "25 Lacs to 50 Lacs", "50 Lacs to 3 Crores", "3 Crores Above"] %>
+  </div>
+  
+<% end %>

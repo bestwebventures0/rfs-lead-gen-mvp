@@ -1,0 +1,18 @@
+<% content_for :step_title do %>
+  Where do you live?
+<% end %>
+
+<% content_for :step do %>
+  2
+<% end %>
+
+<% content_for :sidebar_image do %>questionnaire/step-2.jpg<% end %>
+
+<%= render layout: 'form' do |f| %>
+
+  <div class="my-5 form-field is-required">
+    <%= f.label :pincode, class: "font-bold" %>
+    <%= f.text_field :pincode, placeholder: "Enter 6 digit pincode of your city", autofocus: true, required: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  
+<% end %>

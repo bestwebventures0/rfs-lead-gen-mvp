@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+
+div.field_with_errors > label {
+  @apply text-red-600;
+}
+
+div.field_with_errors > :is(input, textarea, select) {
+  @apply border-red-600 text-red-600 placeholder-red-600;
+}
+
+.form-field.is-required > label:first-child:after {
+  content: '*';
+  margin-left: 2px;
+}
+
+/* Navigation custom styles */
+@media (max-width: 767px) {
+  .navicon {
+      height: .125em;
+      width: 1.125em;
+  }
+
+  .navicon::before,
+  .navicon::after {
+      background: #3D4852;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      transition: all .2s ease-out;
+      width: 100%;
+  }
+
+  .navicon::before {
+      top: 5px;
+  }
+
+  .navicon::after {
+      top: -5px;
+  }
+
+  .menu-btn:not(:checked)~.menu {
+      display: none;
+  }
+
+  .menu-btn:checked~.menu {
+      display: block;
+  }
+
+  .menu-btn:checked~.menu-icon .navicon {
+      background: transparent;
+  }
+
+  .menu-btn:checked~.menu-icon .navicon::before {
+      transform: rotate(-45deg);
+  }
+
+  .menu-btn:checked~.menu-icon .navicon::after {
+      transform: rotate(45deg);
+  }
+
+  .menu-btn:checked~.menu-icon .navicon::before,
+  .menu-btn:checked~.menu-icon .navicon::after {
+      top: 0;
+  }
+}
+/* Navigation custom styles END */
+
+.shadow-top {
+  box-shadow: 0 -10px 20px -5px rgba(226, 232, 240,0.75);
+}

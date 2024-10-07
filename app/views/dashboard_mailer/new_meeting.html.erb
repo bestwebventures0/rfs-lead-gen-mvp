@@ -1,0 +1,24 @@
+<p><%= @greeting %> <%= @user.first_name %>,</p>
+
+<p>
+  You have successfully booked a meeting with <%= @advisor.name %>.
+</p>
+
+<p>
+  Your meeting schedule is as below:-
+</p>
+
+<p> 
+  <u>Part of the Day:</u> <span class="blue"><%= @meeting.day %></span> <br>
+  <u>When:</u> <span class="blue"><%= @meeting.when %></span> <br>
+  <u>How:</u> <span class="blue"><%= @meeting.how %></span>
+</p>
+
+<p>We will get back to you within 2 working days to update you with your meeting date and time with the Financial Planner - <%= @advisor.name %>.</p>
+
+<p>
+  --<br>
+  Best regards,<br>
+  Operations Team,<br>
+  <a href="https://riafin.com">RiaFin.com</a>
+</p>

@@ -1,0 +1,58 @@
+<section class="flex questionnaire">
+
+  <div class="hidden lg:block xl:block w-5/12 min-h-screen bg-[#489030]">
+    <%= image_tag "questionnaire/step-10.jpg", class: "object-cover object-bottom h-full fixed bottom-0 left-0 w-5/12 pointer-events-none" %>
+  </div>
+
+  <div class="lg:w-7/12 xl:w-7/12">
+    <div class="max-w-screen-sm min-h-screen mx-auto px-4 pt-16 pb-8">
+
+      <p class="mb-8">STEP 10 of 11</p>
+
+      <h2 class="font-extrabold text-4xl">Enter your details below:</h2>
+
+      <%= form_with model: [@user], url: wizard_path, method: :patch do |f| %>
+        <% if f.object.errors.any? %>
+          <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+            <h2 class="font-bold text-2xl"><%= pluralize(f.object.errors.count, "error") %> prohibited this field from being saved:</h2>
+            <ul>
+              <% f.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="my-5 form-field is-required">
+          <%= f.label :first_name, class: "font-bold" %>
+          <%= f.text_field :first_name, placeholder: "Enter your first name", autofocus: true, required: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="my-5 form-field is-required">
+          <%= f.label :last_name, class: "font-bold" %>
+          <%= f.text_field :last_name, placeholder: "Enter your last name", required: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="my-5 form-field is-required">
+          <%= f.label :email, class: "font-bold" %>
+          <%= f.email_field :email, placeholder: "Enter your valid email address", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+        <div class="my-5 form-field is-required">
+          <%= f.label :phone, class: "font-bold" %>
+          <%= f.phone_field :phone, placeholder: "Enter your 10 digit valid mobile phone number", required: true, value: "", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+
+        <div class="inline">
+          <%= link_to 'Go Back', previous_wizard_path, class: "rounded-lg py-3 px-5 bg-gray-600 text-white inline-block font-medium cursor-pointer", data: { turbo: false } %>
+          <%= f.submit 'Continue', class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %> <br><br>
+          <%= link_to 'Quit Questionnaire', root_path, class: "text-blue-600 hover:underline mt-8", data: { turbo: false } %>
+        </div>
+
+      <% end %>
+
+      <%= render 'shared/questionnaire/disclaimer' %>
+
+    </div>
+
+    <%= render 'shared/questionnaire/footer' %>
+
+  </div>
+</section>

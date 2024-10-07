@@ -1,0 +1,65 @@
+<h2 class="text-2xl lg:text-3xl xl:text-3xl font-extrabold mb-12"><span class="border-b border-gray-900">Edit your profile</span></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field my-4">
+    <%= f.label :email, class: "font-bold" %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
+        <div class="field my-4">
+            <%= f.label :first_name, class: "font-bold" %><br />
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        </div>
+
+        <div class="field my-4">
+            <%= f.label :last_name, class: "font-bold" %><br />
+            <%= f.text_field :last_name, autocomplete: "last_name" %>
+        </div>
+    </div>
+
+    <div class="field my-4">
+    <%= f.label :phone, class: "font-bold" %><br />
+    <%= f.phone_field :phone, autocomplete: "phone" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
+        <div class="field my-4">
+            <%= f.label :password, class: "font-bold" %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+            <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+        </div>
+
+        <div class="field my-4">
+            <%= f.label :password_confirmation, class: "font-bold" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+    </div>
+
+    <div class="field my-4">
+    <%= f.label :current_password, class: "font-bold" %> <br><i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+
+    <div class="actions my-4">
+        <div class="mt-6">
+            <button type="submit" data-turbo="false" class="group relative w-[136px] flex justify-center py-2.5 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                <svg class="h-5 w-5 transition ease-in-out duration-150" fill="white" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+            </span>
+            Update
+            </button>
+        </div>
+    </div>
+<% end %>

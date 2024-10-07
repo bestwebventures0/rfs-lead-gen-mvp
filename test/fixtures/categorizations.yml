@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: categorizations
+#
+#  id               :integer          not null, primary key
+#  category_id      :integer          not null
+#  questionnaire_id :integer          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+one:
+  category: one
+  questionnaire: one
+
+two:
+  category: two
+  questionnaire: two

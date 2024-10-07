@@ -1,0 +1,88 @@
+<div class="grid grid-cols-3 border border-slate-300 mx-4 pt-4 rounded rounded-lg shadow-lg mb-8">
+    <%= image_tag advisor.avatar.attached? ? advisor.avatar.variant(:thumb) : image_path('fictional-financial-advisers/1.jpg'), alt: "Fictional Financial Adviser 1 - RiaFin", class: "w-2/3 mx-auto rounded rounded-full" %>
+
+    <div class="col-span-2">
+        <p class="text-[16px] font-bold text-blue-700 underline">
+            <%= advisor.name %> <br>
+            <%= advisor.education %>
+        </p>
+        <p class="mt-1 text-sm"><%= advisor.city %></p>
+        <p class="text-xs text-slate-600">Works Virtual</p>
+
+        <p class="pb-2"></p>
+        <% advisor.certifications.split(', ').each do |cert| %>
+            <p class="font-medium bg-blue-100 text-blue-600 rounded rounded-md text-center text-[0.75em] py-[2px] px-0 mr-4 mt-1"><%= cert %></p>
+        <% end %>
+    </div>
+
+    <div class="col-span-3 mt-4 mb-2">
+        <div class="grid grid-cols-2 gap-4 mx-4">
+            <div class="bg-slate-100 text-xs text-slate-600 rounded px-4 py-2 min-h-8">
+                <p class="font-semibold">Company Name</p>
+                <p><%= advisor.company_name %></p>
+                <p class="font-semibold mt-2">Availability</p>
+                <p><%= advisor.availability %></p>
+                <p class="font-semibold mt-2">Pricing</p>
+                <p><%= image_tag("dashboard/icon-aum.svg", class: "inline") if advisor.pricing == "AUM" %> <%= advisor.pricing %></p>
+            </div>
+            <div class="bg-slate-100 text-xs text-slate-600 rounded px-4 py-2 min-h-8">
+                <p class="font-semibold">Licenses</p>
+                <p><%= advisor.licenses %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-span-3 mb-4">
+        <div class="grid grid-cols-2 gap-4 mx-4">
+            <div class="bg-slate-200 text-xs text-slate-700 rounded px-4 py-2 min-h-8">
+                <p class="font-semibold">Specializations</p>
+                <p>
+                    <% advisor.specializations.split(', ').each do |spec| %>
+                        <%= spec %> <br>
+                    <% end %>
+                </p>
+            </div>
+            <div class="bg-slate-200 text-xs text-slate-700 rounded px-4 py-2 min-h-8">
+                <p class="font-semibold">Client Types</p>
+                <p>
+                    <% advisor.client_types.split(', ').each do |ct| %>
+                        <%= ct %> <br>
+                    <% end %>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-span-3 mx-auto pb-2 bg-slate-700 text-white border border-slate-600 rounded-b-lg w-full">
+        <% meeting = Meeting.get_meeting_by_advisor_and_user(current_user, advisor) %>
+        <% unless meeting %>
+            <p class="text-center my-8 block">
+                <a href="<%= new_meeting_path(advisor) %>" class="p-4 bg-white hover:bg-slate-900 text-slate-900 hover:text-white font-semibold rounded rounded-lg shadow-xl">
+                    Book a Meeting
+                </a>
+            </p>
+        <% else %>
+            <% unless meeting.done %>
+                <p class="p-2 pt-4 text-center text-[13px]">
+                    <span class="font-semibold">Your meeting with 
+                        <span class="border-b border-white"><%= advisor.name %></span> 
+                        is booked for 
+                        <span class="font-extrabold"><%= meeting.get_date %></span>
+                    </span>
+                    <br>
+                    <span class="text-xs"> <%= meeting.day %> via <%= meeting.how %></span>
+                    <!--
+                        <br>
+                        <span>
+                            <%#= link_to 'Re-book this Meeting', edit_meeting_path(advisor, meeting), class: "text-xs font-bold text-blue-400 hover:underline" %>
+                        </span>
+                    -->
+                </p>
+            <% else %>
+                <p class="p-2 pt-4 text-center text-green-300 text-[13px] font-semibold">
+                    Your meeting with <span class="border-b border-green-300"><%= advisor.name %></span> has concluded.
+                </p>
+            <% end %>
+        <% end %>
+    </div>
+</div>
