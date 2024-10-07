@@ -9,7 +9,7 @@ The app gives the website user a wizard form to fill his/her personal details an
 ## Tools used
 
 - Rails 7
-- SQLite
+- SQLite (Litestack)
 - ActiveRecord
 - Activejob
 - Test::Unit
@@ -18,7 +18,7 @@ The app gives the website user a wizard form to fill his/her personal details an
 
 ## MVP nature
 
-The tool was built as an MVP for [RiaFin Solutions](https://riafin.com/) and was launched in February 2023, however, due to the business model change of RiaFin we are hereby making this app open source for other developers to refer it to build MVPs by using Ruby on Rails, SQLite, Kamal, etc.
+The tool was built as an MVP for [RiaFin Solutions](https://riafin.com/) and was launched in February 2024, however, due to the business model change of RiaFin we are hereby making this app open source for other developers to refer it to build MVPs by using Ruby on Rails, SQLite, Kamal, etc.
 
 ## What next?
 
